@@ -7,7 +7,7 @@
 extern char buffer[1000];
 extern char bufferarr[100];
 extern char schedule[7][200];
-extern uint8_t timer_count, buffer_index;
+extern uint16_t timer_count, buffer_index;
 extern int apm;
 extern UART_HandleTypeDef huart1;
 extern char mdate[3], mtime[5], nbin[1], med[15], npill[1];

@@ -8,7 +8,7 @@ int testnum;
 int apm;
 char schedule[7][200];
 char mdate[3], mtime[5], nbin[1], med[15], npill[1];
-uint8_t timer_count = 0, buffer_index = 0;
+uint16_t timer_count = 0, buffer_index = 0;
 
 // rearrange the strings in case the strings received is disordered
 void Arrange_strings(char arr[])
