@@ -1,6 +1,6 @@
 mylibrary.c:14:6:Arrange_strings	232	static
-mylibrary.c:30:6:Process_string	24	static
-mylibrary.c:70:6:Indivial_med	136	static
-mylibrary.c:93:6:Manage_strings	64	static
-mylibrary.c:111:9:string_compare	32	static
-mylibrary.c:126:6:Message_handler	8	static
+mylibrary.c:31:6:Process_string	24	static
+mylibrary.c:71:6:Individual_med	136	static
+mylibrary.c:96:6:Manage_strings	24	static
+mylibrary.c:140:9:string_compare	32	static
+mylibrary.c:155:6:Message_handler	8	static

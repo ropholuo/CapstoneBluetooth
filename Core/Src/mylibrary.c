@@ -25,6 +25,7 @@ void Arrange_strings(char arr[])
 	}
 }
 
+//  mon{\"mBinNumb\":\"1\",\"mMedName\":\"test\",\"mNumbPills\":\"2\",\"mTime\":\"6:48 PM\"}
 //  mon{"mBinNumb":"1","mMedName":"Tylenol","mNumbPills":"1",'mTime":"3:00 PM"}
 // grab data if the string format is as above
 void Process_string(char arr[])
@@ -67,7 +68,7 @@ void Process_string(char arr[])
 
 // arr[] is the overall string possibly including several med, target[] is a 2d array
 // which stores each med
-void Indivial_med(char arr[], char target[])
+void Individual_med(char arr[], char target[])
 {
 	char day[3], med[100];
 	strncpy(day, arr, 3);
@@ -82,29 +83,57 @@ void Indivial_med(char arr[], char target[])
 		if(arr[i]=='}')
 		{
 			end = i;
-			strncpy(med, start, end-start+1);
-			strncpy(target[count],day,3);
-			strcat(target[count],med);
+			strncpy(med, arr+start, end-start+1);
+			strncpy(target,day,3);
+			strcat(target,med);
+			//strncpy(target[count],day,3);
+			//strcat(target[count],med);
 		}
 	}
 }
 
 // stores every weekday schedule into 2d array schdule[]
-void Manage_strings(char arr[])
+void Manage_strings()
 {
-	char weekday[7][3] = { "mon", "tue", "wed", "thu", "fri", "sat", "sun"};
-	int post = 0, pre;
-	for(int i=0; i<=6; i++)
+	//char weekday[7][3] = { "mon", "tue", "wed", "thu", "fri", "sat", "sun"};
+	int pre = 0;
+	//char *pos;	//char *pointer = buffer;
+	for(int i=0; i<=strlen(buffer); i++)
 	{
-		char *pos = strstr(arr, weekday[i]);
-    	if (pos != NULL)
+		//pos = strstr(pointer, weekday[i]);
+    	if (buffer[i]=='t' && buffer[i+1]=='u' && buffer[i+2]=='e')
     	{
-    		pre = pos - arr;
-    		post = pre - post;
+    		strncpy(schedule[0],buffer,i);
+    		pre = i;
     	}
-    	strncpy(schedule[i],arr,post);
-    	post = pre;
+    	if (buffer[i]=='w' && buffer[i+1]=='e' && buffer[i+2]=='d')
+    	{
+    		strncpy(schedule[1],buffer+pre,i-pre);
+    		pre = i;
+    	}
+    	if (buffer[i]=='t' && buffer[i+1]=='h' && buffer[i+2]=='u')
+    	{
+    		strncpy(schedule[2],buffer+pre,i-pre);
+    		pre = i;
+    	}
+    	if (buffer[i]=='f' && buffer[i+1]=='r' && buffer[i+2]=='i')
+    	{
+    		strncpy(schedule[3],buffer+pre,i-pre);
+    		pre = i;
+    	}
+    	if (buffer[i]=='s' && buffer[i+1]=='a' && buffer[i+2]=='t')
+    	{
+    		strncpy(schedule[4],buffer+pre,i-pre);
+    		pre = i;
+    	}
+    	if (buffer[i]=='s' && buffer[i+1]=='u' && buffer[i+2]=='n')
+    	{
+    		strncpy(schedule[5],buffer+pre,i-pre);
+    		pre = i;
+    	}
 	}
+	strncpy(schedule[6],buffer+pre,strlen(buffer));
+
 }
 
 // check whether 2 strings are the same

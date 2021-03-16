@@ -15,8 +15,8 @@ extern char mdate[3], mtime[5], nbin[1], med[15], npill[1];
 uint8_t string_compare(char array1[], char array2[], uint16_t length);
 void Message_handler();
 void Process_string(char arr[]);
-void Manage_strings(char arr[]);
+void Manage_strings();
 void Arrange_strings(char arr[]);
-void Indivial_med(char arr[], char target[]);
+void Individual_med(char arr[], char target[]);
 
 #endif /* INC_MYLIBRARY_H_ */

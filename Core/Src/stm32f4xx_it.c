@@ -248,12 +248,13 @@ void TIM6_DAC_IRQHandler(void)
 	if(strlen(buffer)>0)
 		timer_count++;
 
-	if(timer_count>500){
-		Arrange_strings(buffer);
-		//Manage_strings(bufferarr);
-		//Individual_med(schedule[0],)
-		//Process_string(schedule[0]);
-		timer_count = 0;
+	if(timer_count>200){
+
+		//Arrange_strings(buffer);
+		Manage_strings();
+		Individual_med(schedule[0],bufferarr);
+		Process_string(bufferarr);
+		//timer_count = 0;
 	}
   /* USER CODE END TIM6_DAC_IRQn 0 */
   HAL_TIM_IRQHandler(&htim6);
